@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { AvatarComponent } from './avatar/avatar.component';
 import { AppRoutingModule } from './app.route';
 import { HttpModule } from '@angular/http';
+
+import { AppComponent } from './app.component';
+import { AvatarComponent } from './avatar/avatar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 import { UserService } from './service/user.service';
 import { AppConfig } from './service/app.config';
@@ -17,7 +19,8 @@ import { ResponseService } from './service/response.service';
   ],
   declarations: [
     AppComponent,
-    AvatarComponent
+    AvatarComponent,
+    NavbarComponent
   ],
   providers: [
     UserService,
