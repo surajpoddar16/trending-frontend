@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { AvatarComponent } from './avatar/avatar.component';
+
 @NgModule({
   imports: [
-    RouterModule.forRoot([])
+    RouterModule.forRoot([
+      {
+        path: 'get-avatar',
+        component: AvatarComponent
+      }
+    ])
   ],
   exports: [
     RouterModule
