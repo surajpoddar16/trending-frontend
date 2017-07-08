@@ -28,3 +28,10 @@ body {
   z-index: 2;
   background: $white-bg;
 }
+
+.spinner {
+  margin: 60px auto;
+  > div {
+    background-color: $color-primary;
+  }
+}
