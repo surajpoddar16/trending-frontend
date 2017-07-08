@@ -30,10 +30,11 @@ export class TopicService {
 
   getTopics(pageNumber: number, limit: number): Promise<any> {
     let options = new RequestOptions({ headers: this.defaultHeaders });
-    this.getTopicsUrl += `?pageNumber=${pageNumber}&limit=${limit}`;
+
+    var url = this.getTopicsUrl + `?pageNumber=${pageNumber}&limit=${limit}`
 
     return this.http
-      .get(this.getTopicsUrl, options)
+      .get(url, options)
       .toPromise()
       .then(this.responseService.extractData)
       .catch(this.responseService.handleError);

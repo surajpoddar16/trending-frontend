@@ -1,6 +1,6 @@
 <navbar></navbar>
 <div class="container">
-  <topic class="new-topic"></topic>
+  <topic class="new-topic" (submit)="getTopics()"></topic>
   <div class="spinner" *ngIf="loadingTopics">
     <div class="rect1"></div>
     <div class="rect2"></div>
