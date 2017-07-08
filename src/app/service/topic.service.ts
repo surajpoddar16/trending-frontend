@@ -6,7 +6,10 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class TopicService {
-  constructor(private appConfig: AppConfig, private responseService: ResponseService, private http: Http) { }
+  constructor(
+    private appConfig: AppConfig,
+    private responseService: ResponseService,
+    private http: Http) { }
 
   newTopicUrl = this.appConfig.baseUrl + '/topic';
   getTopicsUrl = this.appConfig.baseUrl + '/topic/sorted-all';
@@ -16,16 +19,24 @@ export class TopicService {
 
   newTopic(params: any): Promise<any> {
     let options = new RequestOptions({ headers: this.defaultHeaders });
-
     let body = JSON.stringify(params);
 
-    return this.http.post(this.newTopicUrl, body, options).toPromise().then(this.responseService.extractData).catch(this.responseService.handleError);
+    return this.http
+      .post(this.newTopicUrl, body, options)
+      .toPromise()
+      .then(this.responseService.extractData)
+      .catch(this.responseService.handleError);
   }
 
   getTopics(pageNumber: number, limit: number): Promise<any> {
     let options = new RequestOptions({ headers: this.defaultHeaders });
     this.getTopicsUrl += `?pageNumber=${pageNumber}&limit=${limit}`;
-    return this.http.get(this.getTopicsUrl, options).toPromise().then(this.responseService.extractData).catch(this.responseService.handleError);
+
+    return this.http
+      .get(this.getTopicsUrl, options)
+      .toPromise()
+      .then(this.responseService.extractData)
+      .catch(this.responseService.handleError);
   }
 
   vote(params: any): Promise<any> {
@@ -33,6 +44,10 @@ export class TopicService {
 
     let body = JSON.stringify(params);
 
-    return this.http.post(this.voteUrl, body, options).toPromise().then(this.responseService.extractData).catch(this.responseService.handleError);
+    return this.http
+      .post(this.voteUrl, body, options)
+      .toPromise()
+      .then(this.responseService.extractData)
+      .catch(this.responseService.handleError);
   }
 }

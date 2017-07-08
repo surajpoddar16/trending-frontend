@@ -6,7 +6,10 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-  constructor(private appConfig: AppConfig, private responseService: ResponseService, private http: Http) { }
+  constructor(
+    private appConfig: AppConfig,
+    private responseService: ResponseService,
+    private http: Http) { }
 
   getAvatarUrl = this.appConfig.baseUrl + '/user/avatar';
 
@@ -15,7 +18,11 @@ export class UserService {
   getAvatar(): Promise<any> {
     let options = new RequestOptions({ headers: this.defaultHeaders });
 
-    return this.http.get(this.getAvatarUrl, options).toPromise().then(this.responseService.extractData).catch(this.responseService.handleError);
+    return this.http
+      .get(this.getAvatarUrl, options)
+      .toPromise()
+      .then(this.responseService.extractData)
+      .catch(this.responseService.handleError);
   }
 
   storeAvatar(avatar: any) {
