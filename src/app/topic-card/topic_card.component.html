@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="header">
+    <img class="avatar-image" src="{{ topic.authorImage }}">
+    <div>
+      <span class="author">{{ topic.authorName }}</span>
+      <br>
+      <span class="time">Added on {{ getPrettyDate(topic.date) }}</span>
+    </div>
+  </div>
+  <div class="text-box">
+    {{ topic.title }}
+  </div>
+
+  <div class="actions">
+    <div class="action vote" (click)="upVote()">
+      <i class="material-icons">thumb_up</i>
+      {{ topic.upVotes }}
+    </div>
+
+    <div class="action vote" (click)="downVote()">
+      <i class="material-icons">thumb_down</i>
+      {{ topic.downVotes }}
+    </div>
+  </div>
+</div>

@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
 
     this.topicService.getTopics(this.pageNumber, this.limit).then(function(topics) {
       self.topics = topics;
+      console.log(topics);
       self.loadingTopics = false;
     }, function(err) {
       self.toasterService.pop('error', 'Error', err);

@@ -11,6 +11,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { TopicComponent } from './topic/topic.component';
+import { TopicCardComponent } from './topic-card/topic_card.component';
 
 import { UserService } from './service/user.service';
 import { TopicService } from './service/topic.service';
@@ -31,7 +32,8 @@ import { ResponseService } from './service/response.service';
     AvatarComponent,
     NavbarComponent,
     HomeComponent,
-    TopicComponent
+    TopicComponent,
+    TopicCardComponent
   ],
   providers: [
     UserService,
