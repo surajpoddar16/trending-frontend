@@ -17,6 +17,7 @@ import { UserService } from './service/user.service';
 import { TopicService } from './service/topic.service';
 import { AppConfig } from './service/app.config';
 import { ResponseService } from './service/response.service';
+import { AvatarGuard } from './service/avatar.guard';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { ResponseService } from './service/response.service';
     UserService,
     AppConfig,
     ResponseService,
-    TopicService
+    TopicService,
+    AvatarGuard
   ],
   bootstrap: [ AppComponent ]
 })
