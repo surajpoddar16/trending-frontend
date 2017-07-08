@@ -19,6 +19,11 @@ export class UserService {
   }
 
   storeAvatar(avatar: any) {
-    localStorage.setItem("avatar", JSON.stringify(avatar));
+    localStorage.setItem('avatar', JSON.stringify(avatar));
+  }
+
+  getAvatarFromLocalStorage() {
+    var avatar = localStorage.getItem('avatar');
+    return avatar ? JSON.parse(avatar) : {};
   }
 }

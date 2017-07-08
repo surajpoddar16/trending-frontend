@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 
 @Component({
-  selector: 'login',
+  selector: 'avatar-page',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss']
 })
