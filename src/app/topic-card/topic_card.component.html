@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="header">
+    <img class="avatar-image" src="{{ topic.authorImage }}">
+    <div>
+      <span class="author"></span>
+      <span class="time"></span>
+    </div>
+  </div>
+  <div class="text-box">
+    {{ topic.title }}
+  </div>
+
+  <div class="actions">
+    <div class="vote" (click)="upVote()">
+      <i class="material-icons new-chat">chat</i>
+      {{ topic.upVotes }}
+    </div>
+
+    <div class="vote" (click)="downVote()">
+      <i class="material-icons new-chat">chat</i>
+      {{ topic.downVotes }}
+    </div>
+  </div>
+</div>

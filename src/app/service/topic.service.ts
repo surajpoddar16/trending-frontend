@@ -10,6 +10,7 @@ export class TopicService {
 
   newTopicUrl = this.appConfig.baseUrl + '/topic';
   getTopicsUrl = this.appConfig.baseUrl + '/topic/sorted-all';
+  voteUrl = this.appConfig.baseUrl + '/topic/vote';
 
   defaultHeaders = new Headers({ 'Content-Type': 'application/json' });
 
@@ -25,5 +26,13 @@ export class TopicService {
     let options = new RequestOptions({ headers: this.defaultHeaders });
     this.getTopicsUrl += `?pageNumber=${pageNumber}&limit=${limit}`;
     return this.http.get(this.getTopicsUrl, options).toPromise().then(this.responseService.extractData).catch(this.responseService.handleError);
+  }
+
+  vote(params: any): Promise<any> {
+    let options = new RequestOptions({ headers: this.defaultHeaders });
+
+    let body = JSON.stringify(params);
+
+    return this.http.post(this.voteUrl, body, options).toPromise().then(this.responseService.extractData).catch(this.responseService.handleError);
   }
 }
