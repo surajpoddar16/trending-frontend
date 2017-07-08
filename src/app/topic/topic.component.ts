@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../service/user.service';
+import { TopicService } from '../service/topic.service';
+import { ToasterService } from 'angular2-toaster';
 
 @Component({
   selector: 'topic',
@@ -8,9 +10,17 @@ import { UserService } from '../service/user.service';
 })
 export class TopicComponent implements OnInit {
   avatarImage: any;
+  avatar: any;
   topic: string;
   submitting: boolean = false;
-  constructor(private userService: UserService) {}
+
+  @Output()
+  submit: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(
+    private userService: UserService,
+    private topicService: TopicService,
+    private toasterService: ToasterService) {}
 
   ngOnInit() {
     this.getAvatarImage();
@@ -18,10 +28,31 @@ export class TopicComponent implements OnInit {
 
   getAvatarImage() {
     var self = this;
-    this.avatarImage = this.userService.getAvatarFromLocalStorage().profileImage;
+    this.avatar = this.userService.getAvatarFromLocalStorage();
   }
 
   submitTopic() {
+    var self = this;
+
     this.submitting = true;
+    this.topicService.newTopic({
+      title: this.topic,
+      authorName: this.avatar.name,
+      authorImage: this.avatar.profileImage
+    }).then(function(res) {
+      self.submitting = false;
+      self.toasterService.pop('success', 'Topic Created', 'Topic created successfully');
+      self.clearComponent();
+
+      self.submit.emit(true);
+
+    }, function(err) {
+      self.toasterService.pop('error', 'Error', err);
+      self.submitting = false;
+    });
+  }
+
+  clearComponent() {
+    this.topic = "";
   }
 }
