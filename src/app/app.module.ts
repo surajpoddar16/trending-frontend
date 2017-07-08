@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 import { UserService } from './service/user.service';
 import { AppConfig } from './service/app.config';
@@ -20,7 +21,8 @@ import { ResponseService } from './service/response.service';
   declarations: [
     AppComponent,
     AvatarComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   providers: [
     UserService,
