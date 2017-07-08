@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'navbar',
@@ -8,7 +9,7 @@ import { UserService } from '../service/user.service';
 })
 export class NavbarComponent implements OnInit {
   avatar: any;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.getAvatar();
@@ -17,5 +18,9 @@ export class NavbarComponent implements OnInit {
   getAvatar() {
     var self = this;
     this.avatar = this.userService.getAvatarFromLocalStorage();
+  }
+
+  sanitize(url:string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 }

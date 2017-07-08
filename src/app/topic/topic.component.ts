@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { TopicService } from '../service/topic.service';
 import { ToasterService } from 'angular2-toaster';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'topic',
@@ -20,7 +21,10 @@ export class TopicComponent implements OnInit {
   constructor(
     private userService: UserService,
     private topicService: TopicService,
-    private toasterService: ToasterService) {}
+    private toasterService: ToasterService,
+    private sanitizer: DomSanitizer) {
+
+    }
 
   ngOnInit() {
     this.getAvatarImage();
@@ -54,5 +58,9 @@ export class TopicComponent implements OnInit {
 
   clearComponent() {
     this.topic = "";
+  }
+
+  sanitize(url:string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 }

@@ -1,6 +1,6 @@
 <div class="card">
   <div class="header">
-    <img class="avatar-image" src="{{ topic.authorImage }}">
+    <img class="avatar-image" [src]="sanitize(topic.authorImage)">
     <div>
       <span class="author">{{ topic.authorName }}</span>
       <br>

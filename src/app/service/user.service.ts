@@ -26,6 +26,7 @@ export class UserService {
   }
 
   storeAvatar(avatar: any) {
+    avatar.profileImage = this.appConfig.baseUrl + avatar.profileImage;
     localStorage.setItem('avatar', JSON.stringify(avatar));
   }
 

@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { TopicService } from '../service/topic.service';
 import { ToasterService } from 'angular2-toaster';
+import { AppConfig } from '../service/app.config';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'topic-card',
@@ -13,7 +15,9 @@ export class TopicCardComponent {
 
   constructor(
     private topicService: TopicService,
-    private toasterService: ToasterService) {}
+    private appConfig: AppConfig,
+    private toasterService: ToasterService,
+    private sanitizer: DomSanitizer) {}
 
   upVote() {
     var self = this;
@@ -45,5 +49,9 @@ export class TopicCardComponent {
 
   getPrettyDate(dateString: any) {
     return new Date(dateString).toLocaleDateString();
+  }
+
+  sanitize(url:string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 }
