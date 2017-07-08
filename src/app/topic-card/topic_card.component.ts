@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TopicService } from '../service/topic.service';
 import { ToasterService } from 'angular2-toaster';
 
@@ -7,7 +7,7 @@ import { ToasterService } from 'angular2-toaster';
   templateUrl: './topic_card.component.html',
   styleUrls: ['./topic_card.component.scss']
 })
-export class TopicCardComponent implements OnInit {
+export class TopicCardComponent {
   @Input()
   topic: any;
 
@@ -41,5 +41,9 @@ export class TopicCardComponent implements OnInit {
       self.toasterService.pop('error', 'Error', err);
       this.topic.downVotes--;
     });
+  }
+
+  getPrettyDate(dateString: any) {
+    return new Date(dateString).toLocaleDateString();
   }
 }

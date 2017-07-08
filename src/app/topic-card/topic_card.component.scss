@@ -1,0 +1,56 @@
+@import "../../assets/sass/variables.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: $screen-sm-max;
+  padding: $default-padding;
+
+  @media screen and (max-width: $screen-xs-max) {
+    width: $screen-xs-max;
+  }
+
+  .header {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .avatar-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: $default-image-background;
+    overflow: hidden;
+    margin-right: $default-padding * 3/2;
+  }
+
+  .text-box {
+    font-size: $font-size-title;
+    padding: 2 * $default-padding 0px;
+  }
+
+  .author {
+    font-weight: 500;
+  }
+
+  .time {
+    color: $light-text-secondary;
+    font-size: 13px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .vote {
+    i {
+      margin-right: $default-padding;
+      color: $light-text-secondary;
+      vertical-align: middle;
+    }
+    margin-right: $default-padding;
+  }
+}

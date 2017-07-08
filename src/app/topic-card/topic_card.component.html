@@ -2,8 +2,9 @@
   <div class="header">
     <img class="avatar-image" src="{{ topic.authorImage }}">
     <div>
-      <span class="author"></span>
-      <span class="time"></span>
+      <span class="author">{{ topic.authorName }}</span>
+      <br>
+      <span class="time">Added on {{ getPrettyDate(topic.date) }}</span>
     </div>
   </div>
   <div class="text-box">
@@ -11,13 +12,13 @@
   </div>
 
   <div class="actions">
-    <div class="vote" (click)="upVote()">
-      <i class="material-icons new-chat">chat</i>
+    <div class="action vote" (click)="upVote()">
+      <i class="material-icons">thumb_up</i>
       {{ topic.upVotes }}
     </div>
 
-    <div class="vote" (click)="downVote()">
-      <i class="material-icons new-chat">chat</i>
+    <div class="action vote" (click)="downVote()">
+      <i class="material-icons">thumb_down</i>
       {{ topic.downVotes }}
     </div>
   </div>
