@@ -1,6 +1,12 @@
+@import "../../assets/sass/variables.scss";
 .container {
+  padding-top: $default-header-height;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.new-topic {
+  margin-top: $default-padding;
 }

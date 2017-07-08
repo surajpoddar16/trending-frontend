@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @import "./variables.scss";
+@import "./mixins.scss";
 @import "./spinner.scss";
 
 
@@ -19,4 +20,10 @@ html, body {
 body {
   font-family: 'Roboto', sans-serif;
   background: $light-bg;
+}
+
+.card {
+  @include material-shadow(2px);
+  z-index: 2;
+  background: $white-bg;
 }
