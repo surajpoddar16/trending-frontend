@@ -1,3 +1,5 @@
+// Topic component is used for creating a new Topic and posting it on server.
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../service/user.service';
 import { TopicService } from '../service/topic.service';
@@ -10,11 +12,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./topic.component.scss']
 })
 export class TopicComponent implements OnInit {
-  avatarImage: any;
+  // Avatar of topic publisher
   avatar: any;
+
+  // Topic string to publish
   topic: string;
+
+  // Flag set on submitting a topic
   submitting: boolean = false;
 
+  // On topic submission event
   @Output()
   submit: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -22,23 +29,23 @@ export class TopicComponent implements OnInit {
     private userService: UserService,
     private topicService: TopicService,
     private toasterService: ToasterService,
-    private sanitizer: DomSanitizer) {
-
-    }
+    private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    this.getAvatarImage();
+    this.getAvatar();
   }
 
-  getAvatarImage() {
+  // Get avatar data from local storage
+  getAvatar() {
     var self = this;
     this.avatar = this.userService.getAvatarFromLocalStorage();
   }
 
+  // Submit a topic on server
   submitTopic() {
     var self = this;
-
     this.submitting = true;
+
     this.topicService.newTopic({
       title: this.topic,
       authorName: this.avatar.name,
@@ -47,19 +54,20 @@ export class TopicComponent implements OnInit {
       self.submitting = false;
       self.toasterService.pop('success', 'Topic Created', 'Topic created successfully');
       self.clearComponent();
-
       self.submit.emit(true);
 
     }, function(err) {
-      self.toasterService.pop('error', 'Error', err);
       self.submitting = false;
+      self.toasterService.pop('error', 'Error', err);
     });
   }
 
+  // On topic submission reset topic input and property
   clearComponent() {
     this.topic = "";
   }
 
+  // Sanitize avatar image url of publisher
   sanitize(url:string) {
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }

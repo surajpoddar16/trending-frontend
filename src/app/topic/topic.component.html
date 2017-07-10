@@ -3,7 +3,9 @@
   <div class="text-box">
     <textarea placeholder="Write a Topic.." rows="4" maxlength="255" [(ngModel)]="topic"></textarea>
   </div>
-  <button class="post-button" [disabled]="!topic" (click)="submitTopic()" *ngIf="!submitting">Post</button>
+  <button class="post-button" [disabled]="!topic" (click)="submitTopic()" *ngIf="!submitting">
+    Post
+  </button>
 
   <div class="spinner" *ngIf="submitting">
     <div class="rect1"></div>

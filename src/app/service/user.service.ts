@@ -15,6 +15,7 @@ export class UserService {
 
   defaultHeaders = new Headers({ 'Content-Type': 'application/json' });
 
+  // Get a new avatar from the given url
   getAvatar(): Promise<any> {
     let options = new RequestOptions({ headers: this.defaultHeaders });
 
@@ -25,6 +26,7 @@ export class UserService {
       .catch(this.responseService.handleError);
   }
 
+  // Store user avatar in local storage
   storeAvatar(avatar: any) {
     avatar.profileImage = this.appConfig.baseUrl + avatar.profileImage;
     localStorage.setItem('avatar', JSON.stringify(avatar));

@@ -1,3 +1,12 @@
+// Routing Module for application
+
+// '/' is application home page,
+// home page requires a valid avatar
+// redirect to 'get-avatar' if a valid avatar is not present
+
+// 'get-avatar'
+// this page fetches a new avatar for user from backend and loads home page.
+
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 

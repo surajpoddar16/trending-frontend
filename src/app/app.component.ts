@@ -1,3 +1,5 @@
+// Bootstrap component for AppModule
+
 import { Component } from '@angular/core';
 import '../assets/sass/app.scss';
 

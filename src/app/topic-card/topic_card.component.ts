@@ -1,3 +1,6 @@
+// Shows created topic details in a card layout
+// Provides functionality to upvote or downvote a topic
+
 import { Component, Input } from '@angular/core';
 import { TopicService } from '../service/topic.service';
 import { ToasterService } from 'angular2-toaster';
@@ -22,6 +25,7 @@ export class TopicCardComponent {
   upVote() {
     var self = this;
     this.topic.upVotes++;
+
     this.topicService.vote({
       id: this.topic.id,
       vote: 1,
@@ -36,6 +40,7 @@ export class TopicCardComponent {
   downVote() {
     var self = this;
     this.topic.downVotes++;
+
     this.topicService.vote({
       id: this.topic.id,
       vote: -1,

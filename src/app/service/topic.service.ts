@@ -28,6 +28,7 @@ export class TopicService {
       .catch(this.responseService.handleError);
   }
 
+  // Get Topics sorted in descending order of upvotes.
   getTopics(pageNumber: number, limit: number): Promise<any> {
     let options = new RequestOptions({ headers: this.defaultHeaders });
 
@@ -40,6 +41,7 @@ export class TopicService {
       .catch(this.responseService.handleError);
   }
 
+  // Upvote or downvote a topic
   vote(params: any): Promise<any> {
     let options = new RequestOptions({ headers: this.defaultHeaders });
 
