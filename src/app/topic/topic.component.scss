@@ -1,0 +1,63 @@
+@import "../../assets/sass/variables.scss";
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: $screen-sm-max;
+  padding: $default-padding;
+
+  @media screen and (max-width: $screen-xs-max) {
+    width: $screen-xs-max;
+  }
+
+  .avatar-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: $default-image-background;
+    overflow: hidden;
+    margin-right: $default-padding * 3/2;
+  }
+
+  .post-button {
+    margin-left: $default-padding * 3/2;
+    text-transform: uppercase;
+    background: $color-primary;
+    color: $dark-text-primary;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    padding: $button-padding-vertical $button-padding-horizontal;
+    font-size: $font-size-title;
+    cursor: pointer;
+    &:disabled {
+      background: lighten($color-primary, 20%);
+    }
+  }
+
+  .text-box {
+    flex-grow: 1;
+  }
+
+  textarea {
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    box-shadow: none;
+    outline: none;
+    width: 100%;
+    resize: none;
+    font-size: $font-size-title;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .spinner {
+    margin: 0px;
+    > div {
+      background-color: $color-primary;
+    }
+  }
+}

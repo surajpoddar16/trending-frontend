@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import "node_modules/angular2-toaster/toaster";
+@import "./variables.scss";
+@import "./mixins.scss";
 @import "./spinner.scss";
 
 
@@ -11,9 +14,23 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  color: $light-text-primary;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
+  background: $light-bg;
+}
+
+.card {
+  @include material-shadow(2px);
+  z-index: 2;
+  background: $white-bg;
+}
+
+.spinner {
+  margin: 60px auto;
+  > div {
+    background-color: $color-primary;
+  }
 }

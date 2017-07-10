@@ -1,0 +1,41 @@
+@import "../../assets/sass/variables.scss";
+@import "../../assets/sass/mixins.scss";
+
+header {
+  display: flex;
+  width: 100%;
+  height: $default-header-height;
+  padding: 0px $default-padding;
+  @include material-shadow(4px);
+  position: fixed;
+  z-index: 6;
+  left: 0px;
+  top: 0px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: $white-bg;
+  .brand-icon {
+    margin-left: -1 * $default-padding;
+    padding: $default-padding;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .profile-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    span {
+      font-size: $font-size-title;
+    }
+    img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-right: $default-padding;
+      overflow: hidden;
+      background: $default-image-background;
+    }
+  }
+}
