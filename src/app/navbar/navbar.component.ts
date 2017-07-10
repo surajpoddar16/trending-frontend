@@ -9,7 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NavbarComponent implements OnInit {
   avatar: any;
-  constructor(private userService: UserService, private sanitizer: DomSanitizer) {}
+  constructor(
+    private userService: UserService,
+    private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.getAvatar();

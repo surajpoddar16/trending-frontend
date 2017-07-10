@@ -9,10 +9,15 @@ import { ToasterService } from 'angular2-toaster';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  // Flag set when topics are fetched.
   loadingTopics: boolean = false;
+
+  // Page number and limit flags for fetching topics
   pageNumber: number = 0;
   limit: number = 20;
+
   topics: any = [];
+
   constructor(
     private router: Router,
     private topicService: TopicService,
@@ -22,6 +27,7 @@ export class HomeComponent implements OnInit {
     this.getTopics();
   }
 
+  // Get topics sorted in descending order of upvotes.
   getTopics() {
     var self = this;
     this.loadingTopics = true;
